@@ -1,6 +1,6 @@
 module github.com/adeisagopher/quotesmonger
 
-go 1.21.1
+go 1.20.5
 
 require (
 	github.com/gin-gonic/gin v1.9.1
