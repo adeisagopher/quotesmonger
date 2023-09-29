@@ -6,6 +6,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// Loads in .env variables to be accessed with "godotenv".
 func LoadEnv() {
 	err := godotenv.Load()
 

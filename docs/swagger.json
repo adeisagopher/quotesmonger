@@ -1,0 +1,64 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "A simple quotes API with multiple categories written in GO.",
+        "title": "Quotesmonger API",
+        "contact": {
+            "name": "adeisagopher",
+            "url": "https://github.com/adeisagopher",
+            "email": "adeisagopher@gmail.com"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/quote/{id}": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "get a quote by ID.",
+                "operationId": "get-quote-by-id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "quote ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "arrays"
+                        }
+                    }
+                }
+            }
+        },
+        "/quotes": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "return all quotes stored in the database.",
+                "operationId": "get-all-quotes",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "arrays"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

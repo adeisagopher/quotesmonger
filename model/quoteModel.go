@@ -4,7 +4,7 @@ import "gorm.io/gorm"
 
 type Quotes struct {
 	gorm.Model
-	Quote    string
-	Author   string
-	Category string
+	Quote    string `json:"quote"`
+	Author   string `json:"author"`
+	Category string `json:"category"`
 }

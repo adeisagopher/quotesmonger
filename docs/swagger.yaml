@@ -1,0 +1,43 @@
+basePath: /
+host: localhost:8080
+info:
+  contact:
+    email: adeisagopher@gmail.com
+    name: adeisagopher
+    url: https://github.com/adeisagopher
+  description: A simple quotes API with multiple categories written in GO.
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  title: Quotesmonger API
+  version: "1.0"
+paths:
+  /quote/{id}:
+    get:
+      operationId: get-quote-by-id
+      parameters:
+      - description: quote ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: arrays
+      summary: get a quote by ID.
+  /quotes:
+    get:
+      operationId: get-all-quotes
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: arrays
+      summary: return all quotes stored in the database.
+swagger: "2.0"
