@@ -25,7 +25,7 @@ func init() {
 // @license.name MIT
 // @license.url https://opensource.org/licenses/MIT
 
-// @host localhost:8080
+// @host quotesmonger.onrender.com
 // @BasePath /
 // @query.collection.format multi
 func main() {
