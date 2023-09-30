@@ -1,5 +1,8 @@
 basePath: /
-host: quotesmonger.onrender.com
+definitions:
+  model.Quotes:
+    type: object
+host: localhost:8080
 info:
   contact:
     email: adeisagopher@gmail.com
@@ -12,6 +15,24 @@ info:
   title: Quotesmonger API
   version: "1.0"
 paths:
+  /quote:
+    post:
+      operationId: post-quote
+      parameters:
+      - description: quote data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.Quotes'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Quotes'
+      summary: post a quote to the database.
   /quote/{id}:
     get:
       operationId: get-quote-by-id
@@ -40,4 +61,21 @@ paths:
           schema:
             type: arrays
       summary: return all quotes stored in the database.
+  /quotes/category:
+    get:
+      operationId: get-quote-by-category
+      parameters:
+      - description: quote category name
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: arrays
+      summary: get a quote by category.
 swagger: "2.0"

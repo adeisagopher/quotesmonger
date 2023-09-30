@@ -25,7 +25,7 @@ func init() {
 // @license.name MIT
 // @license.url https://opensource.org/licenses/MIT
 
-// @host quotesmonger.onrender.com
+// @host localhost:8080
 // @BasePath /
 // @query.collection.format multi
 func main() {
@@ -44,4 +44,4 @@ func main() {
 	r.Run()
 }
 
-// nodemon --exec go run main.go --signal SIGTERM
+// nodemon --exec go run main.go --signal SIGTERM || quotesmonger.onrender.com || localhost:8080

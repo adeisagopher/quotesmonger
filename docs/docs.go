@@ -23,6 +23,34 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/quote": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "post a quote to the database.",
+                "operationId": "post-quote",
+                "parameters": [
+                    {
+                        "description": "quote data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Quotes"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Quotes"
+                        }
+                    }
+                }
+            }
+        },
         "/quote/{id}": {
             "get": {
                 "produces": [
@@ -65,6 +93,37 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/quotes/category": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "get a quote by category.",
+                "operationId": "get-quote-by-category",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "quote category name",
+                        "name": "name",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "arrays"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.Quotes": {
+            "type": "object"
         }
     }
 }`
@@ -72,7 +131,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "quotesmonger.onrender.com",
+	Host:             "localhost:8080",
 	BasePath:         "/",
 	Schemes:          []string{},
 	Title:            "Quotesmonger API",

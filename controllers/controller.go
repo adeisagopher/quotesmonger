@@ -60,7 +60,12 @@ func GetQuoteByID(ctx *gin.Context) {
 	})
 }
 
-// Find and return quotes by Category
+// @Summary get a quote by category.
+// @ID get-quote-by-category
+// @Produce json
+// @Param name query string true "quote category name"
+// @Success 200 {arrays} model.Quotes
+// @Router /quotes/category [get]
 func GetQuoteByCategory(ctx *gin.Context) {
 
 	category := ctx.Query("name")
@@ -75,11 +80,17 @@ func GetQuoteByCategory(ctx *gin.Context) {
 
 }
 
+// @Summary post a quote to the database.
+// @ID post-quote
+// @Produce json
+// @Param data body model.Quotes true "quote data"
+// @Success 200 {object} model.Quotes
+// @Router /quote [post]
 func PostQuotes(ctx *gin.Context) {
 	var Body struct {
-		Quote    string
-		Author   string
-		Category string
+		Quote    string `json:"quote"`
+		Author   string `json:"author"`
+		Category string `json:"category"`
 	}
 
 	ctx.Bind(&Body)
