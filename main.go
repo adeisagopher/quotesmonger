@@ -43,5 +43,3 @@ func main() {
 	r.POST("/quote", controllers.PostQuotes)
 	r.Run()
 }
-
-// nodemon --exec go run main.go --signal SIGTERM || quotesmonger.onrender.com || localhost:8080
